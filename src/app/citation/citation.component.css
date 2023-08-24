@@ -1,0 +1,22 @@
+.citation h3 {
+  margin-top: 20px;
+}
+.nav
+{
+  display: flex;
+}
+.citation, .image
+{
+  flex: 1;
+  border: 1px;
+  padding: 10px;
+
+}
+.image img
+{
+  width: 20rem;
+}
+.image
+{
+  margin-left: 70px;
+}
