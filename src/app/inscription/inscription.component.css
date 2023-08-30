@@ -1,0 +1,149 @@
+.inscri{
+    display: flex;
+    margin: 2em;
+}
+.formu{
+    padding: 3em;
+    
+}
+
+.traiter{
+    margin: 2em;
+}
+.traiter input{
+    margin: 1em;
+    background-color: #fff;
+    border: none;
+    border-radius: 15px;
+    height: 2.5em;
+    text-align: center;
+}
+.button{
+    
+    display: flex;
+    justify-content: space-between;
+    width: 20em;
+    text-align: center;
+    margin-left:5em;
+    padding-bottom: 1em;
+}
+.button button{
+    width: 6em;
+    border-radius: 15px;
+    border: none;
+    height: 2em;
+}
+.formul{
+    background-color: #DAACAC;
+    border-radius: 15px;
+}
+.button button:hover{
+    height: 2.3em;
+    width: 6.3em;
+
+}
+p{
+    text-align: center;
+    text-transform:initial;
+    font-weight: 500;
+    font-size: xx-large;
+} 
+.image_contenair {
+    padding-right: 15rem;
+    width: 40%;
+  }
+  
+.flote {
+    position: relative;
+    animation: floatAnimation 3s ease-in-out infinite;
+  }
+  
+  @keyframes floatAnimation {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px); /* Ajustez la valeur pour contrôler la hauteur du flottement */
+    }
+  }
+
+/* PARTIE CONNEXION */
+
+.connexion{
+    display: flex;
+    margin: 2em;
+    align-items: center;
+}
+
+.connexion .formu{
+    padding: 3em;
+    
+}
+
+.connexion .traiter{
+    margin: 2em;
+}
+.connexion .traiter input{
+    margin: 1em;
+    background-color: #fff;
+    border: none;
+    border-radius: 15px;
+    height: 2.5em;
+    text-align: center;
+}
+.connexion .button{
+    
+    display: flex;
+    justify-content: space-between;
+    width: 20em;
+    text-align: center;
+    margin-left:13em;
+    padding-bottom: 1em;
+    text-align: center;
+}
+.connexion .button button{
+    width: 6em;
+    border-radius: 15px;
+    border: none;
+    height: 2em;
+
+}
+.connexion .formul{
+    background-color: #DAACAC;
+    border-radius: 15px;
+}
+.connexion .button button:hover{
+    height: 2.3em;
+    width: 6.3em;
+
+}
+
+p{
+    text-align: center;
+    text-transform:initial;
+    font-weight: 500;
+    font-size: xx-large;
+}
+a{
+    cursor: pointer;
+}
+
+.img_flott {
+    padding-right: 15rem;
+    width: 40%;
+  }
+  
+.monte {
+    position: relative;
+    animation: floatAnimation 3s ease-in-out infinite;
+  }
+  
+  @keyframes floatAnimation {
+    0%, 100% {
+      transform: translateX(0);
+    }
+    50% {
+      transform: translateX(+50px); /* Ajustez la valeur pour contrôler la hauteur du flottement */
+    }
+  }
+

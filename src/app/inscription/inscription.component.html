@@ -1,0 +1,53 @@
+<section class="inscrip" *ngIf="showRegister">
+<p>BIENVENUE INSCRIVEZ-VOUS !!!</p>
+<div class="inscri">
+    
+    <div class="formu">
+        <form class="formul" (submit)="onSubmit($event)">
+            <div class="traiter"><input type="text" [(ngModel)]="nom" placeholder="Nom  ">
+                <input type="text" [(ngModel)]="prenom" placeholder="Prenom">
+            </div>
+
+            <div class="traiter"><input type="email" [(ngModel)]="email" placeholder="ex@gmail.com">
+                <input type="password" [(ngModel)]="password" placeholder="password">
+            </div>
+
+            <div class="button"> 
+                <button type="reset" style="background-color: #E71E1E;"><i class="fa-solid fa-xmark"></i></button>
+                <button type="submit" style="background-color: #008000;" ><i class="fa-solid fa-check"></i></button>
+            </div>
+           
+        </form>
+    </div>
+    <div class="image_contenair">
+        <img class="flote" src="../../assets/illustrations/profile_1.png" alt="">
+    </div>
+
+</div>
+<a (click)="showRegister = false">J'ai un compte ?</a>
+</section>
+
+<section *ngIf="!showRegister">
+    <p>CONNEXION !!!</p>
+    <div class="connexion">
+    <div class="formu">
+        <form class="formul">
+          
+            <div class="traiter"><input type="email" placeholder="ex@gmail.com">
+                <input type="password" placeholder="password">
+            </div>
+
+            <div class="button"> 
+                
+                <button type="submit" style="background-color: #008000;" ><i class="fa-solid fa-check"></i></button>
+            </div>
+           
+        </form>
+    </div>
+    <div class="img_flott">
+        <img class="monte" src="../../assets/illustrations/profile_1.png" alt="">
+    </div>
+
+</div>
+        <a (click)="showRegister = true">Vous n'avez de pas de compte ?</a>
+</section>

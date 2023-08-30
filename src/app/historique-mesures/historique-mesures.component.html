@@ -1,0 +1,71 @@
+<!-- modifiaction des données -->
+<div class="modal-custom" id="myModalAdd" *ngIf="addMe">
+    <div class="modal-container">
+        <div class="add-custom">
+            <div class="modal-header">
+                <h3 style="padding: 10px;" *ngIf="editable">Modification</h3> 
+            </div>
+                <div id="mesure"> <!-- Champs pour entrer les données de mesure -->
+                    <div class="input"><input value="{{mesureItem.date}}" type="date" placeholder="Date"></div>            
+                    <div class="input"><input value="{{mesureItem.poids}}" type="number" placeholder="Poids"></div>            
+                    <div class="input"><input value="{{mesureItem.taille}}" type="number" placeholder="Taille"></div>            
+                    <div class="input"><input value="{{mesureItem.pouls}}" type="number" placeholder="Pouls"></div>
+                    <div class="input w-100"><input type="number" value="{{mesureItem.pressionArterielle}}" placeholder="Pression artérielle"></div>
+                </div>
+               
+                <div class="footer"> <!-- Boutons de fermeture et d'enregistrement des données -->
+                    <div class="input"><a (click)="addMe = false" href="#" style="color: red;"><i class="fa-solid fa-xmark"></i></a></div>
+                    <div class="input t-right">
+                        <a *ngIf="!editable" (click)="saveMesure($event)" href="#"><i class="fa-solid fa-floppy-disk"></i></a>
+                        <a *ngIf="editable" (click)="updateMesure($event,mesureItem.id)" href="#"><i class="fa-solid fa-floppy-disk"></i></a>
+                    </div>
+                </div>
+        </div>        
+    </div>
+</div>
+
+<div class="modal-custom" id="myModalHistorique"  *ngIf="mesureItemShow">
+    <div class="modal-container">
+        <div class="view">
+            <div class="modal-header-custom">
+                <h5><b>Historique {{mesureItem.id}}</b></h5>
+            </div>
+            <div class="md-container"> <!-- Affichage des détails de la mesure -->
+            <p><b><span>Date: </span><span>{{mesureItem.date}}</span></b></p>
+            <p><b><span>Poids: </span><span>{{mesureItem.poids}} kg</span></b></p>            
+            <p><b><span>Taille: </span><span>{{mesureItem.taille}} cm</span></b></p>
+            <p><b><span>Pouls: </span><span>{{mesureItem.pouls}} bmp</span></b></p>
+            <p><b><span>Pression artérielle: </span><span>{{mesureItem.pressionArterielle}} mmHg</span></b></p>
+            <p><b><span style="color: red;"> Indice de masse corporelle: </span><span style="color: red;">{{calculateIMC(mesureItem.poids, mesureItem.taille)}}</span></b></p>
+
+            <div class="footer"> <!-- Boutons pour éditer, supprimer et fermer la modal -->
+                <div class="input"><a (click)="deleteMesure(mesureItem.id)" style="color: red;"><i class="fa-solid fa-trash-can"></i></a></div>
+                  <div class="input t-right">
+                    <a (click)="addMe = true; mesureItemShow=false; editable = true"><i class="fa-solid fa-pen-to-square"></i></a>
+                    <a (click)="closeModal($event,'myModalHistorique')" >
+                    <i class="fa-solid fa-share"></i></a></div>
+            </div>
+        </div>
+        
+            <p style="height: 20px;"></p>
+        </div>
+        
+    </div>
+</div>
+
+<div class="container">
+    <div class="historique-container">
+       
+        <div *ngFor="let mesure of mesureList" class="historique"><a (click)="openModalView($event,'myModalHistorique',mesure.id)" href="#">Historique {{mesure.id}}   IMC : {{ calculateIMC(mesure.poids, mesure.taille) }}</a></div>
+      
+    <div class="action-container">
+        <a href="#" (click)="openModal($event)">Ajouter</a>
+    </div>
+    </div>
+    
+    <div class="img-container">
+        <img class="floating-image" src="../../assets/fich.png" alt="logo">
+      </div>
+
+</div>
+

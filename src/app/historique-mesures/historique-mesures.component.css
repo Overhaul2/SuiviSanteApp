@@ -1,0 +1,131 @@
+
+
+.container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.historique{
+    margin-bottom: 25px;
+}
+.historique a{
+    text-decoration: none;
+    padding: 10px 80px;
+    background-color: #008000;
+    font-weight: bold;
+    border-radius: 30px;
+    color: #000;
+}
+.action-container{
+    width: 300%;
+    text-align: center;
+    margin-top: 80px;
+
+}
+.action-container a{
+    text-decoration: none;
+    padding: 10px 40px;
+    background-color: #008000;
+    font-weight: bold;
+    color: #000;   
+}
+.modal-custom{
+    position: fixed;
+    /* display: none; */
+    top: 0;
+    width: 100vw;
+    background-color: rgba(0,0,0,0.4);
+    height: 100vh;
+    z-index: 10;
+}
+.modal-container{
+
+    width: 30%;
+    margin: auto; 
+    margin-top: 60px;
+    background-color: #008000;
+    border-radius: 10px;
+}
+.modal-custom .input{
+    display: inline-block;
+    width: 50%;
+    padding: 10px;
+
+}
+.modal-custom input{
+    width: 100%;
+    border-radius: 5px;
+    border: none;
+    padding: 10px;width: 100%;
+    border-radius: 5px;
+}
+.modal-custom .w-100{
+    width: 100%;
+}
+.modal-custom .t-right{
+    text-align: right;
+}
+.modal-custom a{
+    font-size: 35px;
+    color: #000;
+    cursor: pointer;
+    
+}
+/* .modal-custom .view{
+    display: none;
+} */
+
+.modal-custom .view{
+    color: #000;
+    background-color: #008000;
+    border-radius: 20px;
+}
+
+.modal-custom .modal-header-custom{
+   text-align: center;
+    padding: 10px;
+}
+.modal-custom .md-container{
+    padding: 10px;
+    margin: 0px 10px;
+    border-radius: 20px;
+    background-color: #fff;
+
+}
+.modal-custom a i{
+    margin-right: 10px;
+}
+
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+.img-container {
+    padding-right: 15rem;
+    width: 40%;
+  }
+  
+  .floating-image {
+    position: relative;
+    animation: floatAnimation 3s ease-in-out infinite;
+  }
+  
+  @keyframes floatAnimation {
+    0%, 100% {
+      transform: translateX(0);
+    }
+    50% {
+      transform: translateX(50px); /* Ajustez la valeur pour contrôler la hauteur du flottement */
+    }
+  }
+  
+    
+
