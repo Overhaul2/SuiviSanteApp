@@ -1,0 +1,44 @@
+.chart-circle{
+    max-width: 700px;
+    margin: 40px auto;
+    padding: 0;
+}
+
+
+.user-info{
+        width: 90%;
+        margin: auto;
+}
+.user-info #chart, .css-after{
+    display: inline-block;
+}
+.user-info #chart{
+    width: 70%;
+}
+.css-after{
+    width: 30%;
+    text-align: center;
+}
+  /*.css-after {
+    position: relative;
+  }*/
+  .css-after img {
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    border: 2px solid #137D00;
+    
+  }
+  /* .css-after::after {
+    content: "";
+    width: 85px;
+    height: 91px;
+    border-radius: 50%;
+    background-color: #ff5722;
+    display: block;
+    position: absolute;
+    top: -6px;
+    right: 90%;
+    z-index: -1;
+  }
+   */

@@ -1,18 +1,39 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
+import { BrowserModule, bootstrapApplication } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
+
+import {NgApexchartsModule} from "ng-apexcharts";
+
+import {AppComponent} from "./app.component";
+
+import { TableauBordComponent } from './tableau-bord/tableau-bord.component';
+import { HistoriqueMesuresComponent } from './historique-mesures/historique-mesures.component';
+import { AccueilComponent } from './accueil/accueil.component';
+import { InscriptionComponent } from './inscription/inscription.component';
+
+
+
 
 @NgModule({
   declarations: [
-    AppComponent
+    TableauBordComponent,
+    AppComponent,
+    HistoriqueMesuresComponent,
+    AccueilComponent,
+    InscriptionComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgApexchartsModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+
+export class AppModule {}
+  
+

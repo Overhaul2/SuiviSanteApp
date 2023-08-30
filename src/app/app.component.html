@@ -1,1 +1,61 @@
-<h2>Bienvenue Sur {{title}}</h2>
+<div class="nav-custom">
+    <ul>
+        <li class="logo"><a routerLink="/home"><img src="../assets/logo.png" alt="logo"><span>Suivi Sante</span></a></li>
+        <li><a routerLink="/home"><i class="fa-solid fa-house"></i><span>Accueil</span></a></li>
+        <li><a routerLink="/inscription"> <i class="fa-solid fa-user-plus"></i> Inscription</a></li>
+        <li><a routerLink="/dashboard"><i class="fa-solid fa-gauge"></i> <span>Tableau de bord</span></a></li>
+        <li><a routerLink="/historique"><i class="fa-solid fa-clipboard-list"></i><span>Historique</span></a></li>
+        <li *ngIf="!auth" class="deconnexion"><a routerLink="/auth" href="#"><i class="fa-solid fa-user"></i></a></li>
+        <li *ngIf="auth" class="deconnexion"><a><i class="fa-solid fa-arrow-right-from-bracket"></i></a></li>
+    </ul>
+</div>
+  <router-outlet></router-outlet>
+<footer class="footer-distributed">
+      <div class="footer-right">
+        <p class="footer-company-about">
+            <span>À propos de Suivi Sante</span>
+            Lorem ipsum dolor sit amet, consectateur adispicing elit. Fusce euismod convallis velit, eu auctor lacus vehicula sit amet.
+          </p>  
+          <div class="footer-icons">
+            <a href="#" style="color:  #1877f2"><i class="fa-brands fa-facebook"></i></a>
+            <a href="#" style="color:#00acee"><i class="fa-brands fa-twitter"></i></a>
+            <a href="#" style="color:#222222"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" style="color:#c4302b"><i class="fa-brands fa-youtube"></i></a>
+  
+          </div>
+      </div>
+      <div class="footer-center">
+
+        <div>
+          <i class="fa fa-map-marker"></i>
+          <p><span>HAMDALLAYE ACI</span>2000</p>
+        </div>
+
+        <div>
+          <i class="fa fa-phone"></i>
+          <p>+223 77 55 77 88</p>
+        </div>
+
+        <div>
+          <i class="fa fa-envelope"></i>
+          <p><a href="mailto:support@company.com">sc523644@gmail.com</a></p>
+        </div>
+
+      </div>
+
+      <div class="footer-left">
+
+        <p class="footer-links">
+            <a href="#" class="link-1"><i class="fa-solid fa-house"></i> Accueil</a>
+            
+            <a href="#"><i class="fa-solid fa-gauge"></i> Tableau de bord</a>
+          
+            <a href="#"><i class="fa-solid fa-clipboard-list"></i> Historique</a>
+  
+          </p>
+
+      </div>
+
+    </footer>
+
+
