@@ -28,7 +28,7 @@
     padding: 10px 40px;
     background-color: #008000;
     font-weight: bold;
-    color: #000;   
+    color: #000;
 }
 .modal-custom{
     position: fixed;
@@ -42,7 +42,7 @@
 .modal-container{
 
     width: 30%;
-    margin: auto; 
+    margin: auto;
     margin-top: 60px;
     background-color: #008000;
     border-radius: 10px;
@@ -70,7 +70,7 @@
     font-size: 35px;
     color: #000;
     cursor: pointer;
-    
+
 }
 /* .modal-custom .view{
     display: none;
@@ -105,19 +105,19 @@ input::-webkit-inner-spin-button {
 }
 
 /* Firefox */
-input[type=number] {
+/* input[type=number] {
   -moz-appearance: textfield;
-}
+} */
 .img-container {
     padding-right: 15rem;
     width: 40%;
   }
-  
+
   .floating-image {
     position: relative;
     animation: floatAnimation 3s ease-in-out infinite;
   }
-  
+
   @keyframes floatAnimation {
     0%, 100% {
       transform: translateX(0);
@@ -126,6 +126,6 @@ input[type=number] {
       transform: translateX(50px); /* Ajustez la valeur pour contrôler la hauteur du flottement */
     }
   }
-  
-    
+
+
 

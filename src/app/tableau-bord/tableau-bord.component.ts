@@ -118,7 +118,7 @@ export class TableauBordComponent implements OnInit{
               return  + val + " bmp";
             }
           }]
-        
+
       },
       responsive: [
         {
