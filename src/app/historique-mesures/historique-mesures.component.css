@@ -21,6 +21,7 @@
     width: 300%;
     text-align: center;
     margin-top: 80px;
+    font-weight: bold;
 
 }
 .action-container a{
@@ -29,6 +30,12 @@
     background-color: #008000;
     font-weight: bold;
     color: #000;
+    border-radius: 10px;
+    transition: .3s;
+}
+.action-container a:hover{
+  background-color: #036103;
+  color: #dfe310;
 }
 .modal-custom{
     position: fixed;

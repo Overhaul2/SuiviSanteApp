@@ -137,7 +137,8 @@ export class HistoriqueMesuresComponent implements OnInit {
     this.mesureServices.getMesureList().splice(index - 1, 1, newMesure);
     //this.mesureServices.getMesureList()[index] = newMesure;
 
-    console.log("le contenu a été modifier");
+    // console.log("le contenu a été modifier");
+    Swal.fire('Modification', 'La mesure a été Modifier avec succèe', 'success')
 
     //setInMesureList(newMesure);
     this.mesureItemShow = null;
