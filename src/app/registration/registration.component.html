@@ -1,0 +1,40 @@
+<div class="formulaire">
+
+  <div class="inscription">Inscription</div>
+
+  <form (ngSubmit)="onSubmit()">
+    
+    <div class="user-details">
+      <div class="input-group">
+        <div class="input-box">
+          <label for="nom">Nom</label>
+          <input type="text" name="nom" id="nom" [(ngModel)]="nom">
+        </div>
+
+        <div class="input-box">
+          <label for="prenom">Pre-Nom</label>
+          <input type="text" name="prenom" id="prenom" [(ngModel)]="prenom">
+        </div>
+      </div>
+
+      <div class="input-group">
+        <div class="input-box">
+          <label for="email">Email</label>
+          <input type="email" name="email" id="email" [(ngModel)]="email">
+        </div>
+
+        <div class="input-box">
+          <label for="password">Mot De Passe</label>
+          <input type="password" name="password" id="password" [(ngModel)]="password">
+        </div>
+      </div>
+      <div class="input-group">
+        <div class="input-box">
+          <button type="reset">Annuler</button>
+          <button type="submit">S'inscrire</button>
+        </div>
+      </div>
+
+    </div>
+  </form>
+</div>

@@ -21,6 +21,7 @@
     width: 300%;
     text-align: center;
     margin-top: 80px;
+    font-weight: bold;
 
 }
 .action-container a{
@@ -28,7 +29,13 @@
     padding: 10px 40px;
     background-color: #008000;
     font-weight: bold;
-    color: #000;   
+    color: #000;
+    border-radius: 10px;
+    transition: .3s;
+}
+.action-container a:hover{
+  background-color: #036103;
+  color: #dfe310;
 }
 .modal-custom{
     position: fixed;
@@ -42,7 +49,7 @@
 .modal-container{
 
     width: 30%;
-    margin: auto; 
+    margin: auto;
     margin-top: 60px;
     background-color: #008000;
     border-radius: 10px;
@@ -60,6 +67,31 @@
     padding: 10px;width: 100%;
     border-radius: 5px;
 }
+.validation-input {
+    border: 1px solid #ccc;
+    transition: border-color 0.3s;
+  }
+  
+  .validation-input.ng-dirty.ng-invalid {
+    border-color: red;
+  }
+  
+  .message-erreur {
+    color: red;
+    font-size: 12px;
+    margin-top: 5px;
+    opacity: 0;
+    transition: opacity 2s;
+  }
+  
+  .message-erreur.ng-leave {
+    opacity: 1;
+  }
+  
+  .message-erreur.ng-leave-active {
+    opacity: 0;
+  }
+  
 .modal-custom .w-100{
     width: 100%;
 }
@@ -70,7 +102,7 @@
     font-size: 35px;
     color: #000;
     cursor: pointer;
-    
+
 }
 /* .modal-custom .view{
     display: none;
@@ -105,19 +137,19 @@ input::-webkit-inner-spin-button {
 }
 
 /* Firefox */
-input[type=number] {
+/* input[type=number] {
   -moz-appearance: textfield;
-}
+} */
 .img-container {
     padding-right: 15rem;
     width: 40%;
   }
-  
+
   .floating-image {
     position: relative;
     animation: floatAnimation 3s ease-in-out infinite;
   }
-  
+
   @keyframes floatAnimation {
     0%, 100% {
       transform: translateX(0);
@@ -126,6 +158,6 @@ input[type=number] {
       transform: translateX(50px); /* Ajustez la valeur pour contrôler la hauteur du flottement */
     }
   }
-  
-    
+
+
 

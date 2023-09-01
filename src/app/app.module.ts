@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule, bootstrapApplication } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 
 import {NgApexchartsModule} from "ng-apexcharts";
@@ -35,7 +34,5 @@ import { InscriptionComponent } from './inscription/inscription.component';
   providers: [],
   bootstrap: [AppComponent]
 })
-
-export class AppModule {}
-  
-
+export class AppModule { }
+export class YourModule{}

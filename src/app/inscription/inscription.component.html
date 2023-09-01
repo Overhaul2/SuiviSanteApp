@@ -5,8 +5,8 @@
     <div class="formu">
         <form class="formul" (submit)="onSubmit()" [formGroup]="myForm">
             <div class="traiter">
-                <input type="text" formControlName="nom" placeholder="Nom">
-                <input type="text" formControlName="prenom" placeholder="Prenom">
+                <input type="text" formControlName="nom" placeholder="Nom" >
+                <input type="text" formControlName="prenom" placeholder="Prenom" >
             </div>
 
             <div class="traiter">
@@ -18,7 +18,7 @@
                 <button type="reset" style="background-color: #E71E1E;"><i class="fa-solid fa-xmark"></i></button>
                 <button type="submit"   style="background-color: #008000;" ><i class="fa-solid fa-check"></i></button>
             </div>
-           
+            <a (click)="showRegister = false">connxion</a>
         </form>
     </div>
     <div class="image_contenair">
@@ -26,7 +26,7 @@
     </div>
 
 </div>
-<a (click)="showRegister = false">J'ai un compte ?</a>
+
 </section>
 
 <section *ngIf="!showRegister">
@@ -38,11 +38,14 @@
             <div class="traiter"><input type="email" placeholder="ex@gmail.com">
                 <input type="password" placeholder="password">
             </div>
+            
+            <!-- <input class="exo" type=text pattern="^[( )a-zA-Z]+$" placeholder="nomm"><span>Veuillez entrer uniquement des lettres</span> -->
 
             <div class="button"> 
                 
                 <button type="submit" style="background-color: #008000;" ><i class="fa-solid fa-check"></i></button>
             </div>
+            
            
         </form>
     </div>

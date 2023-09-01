@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Mesure } from './mesure';
 import { User } from './user';
+import Swal from 'sweetalert2';
 
 @Injectable({
   providedIn: 'root'
@@ -31,6 +32,7 @@ public getUserList():User[]{
 // Ajoute une mesure à la liste
 public setInMesureList(mesure:Mesure):void{
     this.mesureList.push(mesure);
+    Swal.fire('Ajouter', 'La mesure a été ajouter avec succèe', 'success')
 }
 
 
@@ -54,11 +56,26 @@ public getUserById(id:number):User | undefined{
 public deleteMesure(mesureId: number) {
   // Recherchez l'index de la mesure dans le tableau mesureList
   const index = this.mesureList.findIndex(mesure => mesure.id === mesureId);
-  
+
   // Si l'index est valide (différent de -1), supprimez la mesure du tableau
   if (index !== -1) {
-    this.mesureList.splice(index, 1);
-  }
+    const Confirmation= Swal.fire({
+      title: 'Confirmation!',
+      text: 'Voulez-vous vraiment Supprimer ?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Oui',
+      confirmButtonColor:'red',
+      cancelButtonText: 'Non',
+      cancelButtonColor:'green',
+      focusCancel:true
+    })
+    .then((result)=>{
+    if(result.isConfirmed){this.mesureList.splice(index, 1);
+    Swal.fire('Supprimé', 'La mesure a été supprimé aves succèss', 'success');}
+  });
+}
+
 }
 updateMesure(updatedMesure: Mesure) {
 
