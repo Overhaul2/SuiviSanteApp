@@ -1,8 +1,6 @@
-import { Component, OnChanges, OnInit, SimpleChanges, inject,ElementRef, HostListener } from '@angular/core';
+import { Component,  OnInit, inject } from '@angular/core';
 import { SuiviSanteServiceService } from '../suivi-sante-service.service';
 import { Mesure } from '../mesure';
-
-
 
 @Component({
   selector: 'app-historique-mesures',
@@ -10,16 +8,16 @@ import { Mesure } from '../mesure';
   styleUrls: ['./historique-mesures.component.css']
 })
 export class HistoriqueMesuresComponent implements OnInit{
-  public mesureList:Mesure[] = [];
-  public mesureItemShow: any;
-  public addMe:any;
-  public mesureItem:any;
-  public editable = false;
+  public mesureList:Mesure[] = [];//liste pour stocker les mesures initialiser
+  public mesureItemShow: any; // Affiche les details d'une mesure
+  public addMe:any; // Permet d'ajouter une nouvelle mesure
+  public mesureItem:any; // Mesure actuellement affichée ou modifier 
+  public editable = false;// indique si la mesure est en mode édition
 
   ngOnInit(): void {
-    this.mesureList = this.mesureServices.getMesureList();
+    this.mesureList = this.mesureServices.getMesureList(); // Initialise la liste des mesures
     this.mesureItem = new Mesure(parseInt(""),"",parseInt(""),
-    parseFloat(""),parseInt(""),parseInt(""));
+    parseFloat(""),parseInt(""),parseInt("")); // Initialise une nouvelle mesure vide
   }
   mesureServices: SuiviSanteServiceService = inject(SuiviSanteServiceService);
 
@@ -28,6 +26,8 @@ export class HistoriqueMesuresComponent implements OnInit{
       e.preventDefault();
       var mesureTag = <HTMLElement> document.getElementById("mesure");
       var allMesureTag = mesureTag.querySelectorAll("input");
+
+      // Vérifie si les champs sont tous remplis
       if( allMesureTag[0].value == "" ||
           allMesureTag[1].value == "" ||
           allMesureTag[2].value == "" ||
@@ -35,6 +35,7 @@ export class HistoriqueMesuresComponent implements OnInit{
           allMesureTag[4].value == ""){
             return
           }
+          // Crée une nouvelle mesure et l'ajoute à la liste
       var newMesure:Mesure = new Mesure(
         this.mesureServices.getMesureList().length+1,
         allMesureTag[0].value,
@@ -46,11 +47,13 @@ export class HistoriqueMesuresComponent implements OnInit{
         this.mesureItemShow = null;
         this.addMe = false;
   }
-
+  // Mise à jour d'une mesure existante 
   public updateMesure(e:Event,index:number){
     e.preventDefault();
     var mesureTag = <HTMLElement> document.getElementById("mesure");
     var allMesureTag = mesureTag.querySelectorAll("input");
+    // Crée une nouvelle mesure avec les données mises à jour
+
     var newMesure:Mesure = new Mesure(
       index,
       allMesureTag[0].value,
@@ -58,17 +61,17 @@ export class HistoriqueMesuresComponent implements OnInit{
       parseInt(allMesureTag[2].value),
       parseInt(allMesureTag[3].value),
       parseInt(allMesureTag[4].value));
+
+      // Remplace la mesure existante par la nouvelle mesure dans la liste
       this.mesureServices.getMesureList().splice(index-1,1,newMesure);
       //this.mesureServices.getMesureList()[index] = newMesure;
-
       console.log("le contenu a été modifier");
-      
       //setInMesureList(newMesure);
       this.mesureItemShow = null;
       this.addMe = false;
       this.editable = false;
 }
-  // Ouvre une fenêtre modale pour ajouter quelque chose
+ // Ouvre une fenêtre modale pour ajouter une nouvelle mesure
   public openModal(e:Event){
     e.preventDefault();
     this.addMe = true; 

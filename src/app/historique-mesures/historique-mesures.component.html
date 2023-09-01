@@ -6,7 +6,7 @@
                 <h3 style="padding: 10px;" *ngIf="editable">Modification</h3> 
             </div>
                 <div id="mesure"> <!-- Champs pour entrer les données de mesure -->
-                    <div class="input"><input value="{{mesureItem.date}}" type="date" placeholder="Date"></div>            
+                    <div class="input"><input value="{{mesureItem ? mesureItem.date :'' }}" type="date" placeholder="Date"></div>            
                     <div class="input"><input value="{{mesureItem.poids}}" type="number" placeholder="Poids"></div>            
                     <div class="input"><input value="{{mesureItem.taille}}" type="number" placeholder="Taille"></div>            
                     <div class="input"><input value="{{mesureItem.pouls}}" type="number" placeholder="Pouls"></div>

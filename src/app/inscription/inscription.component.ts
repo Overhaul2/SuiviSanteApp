@@ -1,40 +1,45 @@
-import { Component } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
+import { SuiviSanteServiceService } from '../suivi-sante-service.service';
+import { User } from '../user';
 
 
 @Component({
   selector: 'app-inscription',
   templateUrl: './inscription.component.html',
   styleUrls: ['./inscription.component.css']
+  
 })
+
 export class InscriptionComponent {
   showRegister = true;
-  nom : string = '';
-  prenom : string = '';
-  email : string = '';
-  password : string = '';
+  suiviSanteService:SuiviSanteServiceService;
+  myForm = new FormGroup({
+      nom : new FormControl(''),
+      prenom : new FormControl(''),
+      email : new FormControl(''),
+      password : new FormControl('')
+  })
 
-  registerUser(event : Event) : void{
-    event.preventDefault();
-    //enregistrement des données dans le locall storage
-    localStorage.setItem('nom', this.nom);
-    localStorage.setItem('prenom', this.prenom);
-    localStorage.setItem('email', this.email);
+  constructor(suiviSanteService:SuiviSanteServiceService){
+    this.suiviSanteService = suiviSanteService;
+    const u = localStorage.getItem("users");
+      console.log(u);
+    if(u){
+      this.suiviSanteService.usersList = JSON.parse(u);
+    }
+    
+  } 
 
-     // Réinitialisez les champs du formulaire
-     this.nom = '';
-     this.prenom = '';
-     this.email = '';
-     this.password = '';
-    this.showRegister = false;
-     // Naviguez vers la section de connexion
- 
-  }
-  onSubmit(event: Event): void {
-    event.preventDefault();
-    console.log('Registration form submitted!');
-    console.log(`Nom: ${this.nom}`);
-    console.log(`Prénom: ${this.prenom}`);
-    console.log(`Email: ${this.email}`);
-    console.log(`Password: ${this.password}`);
+  onSubmit(): void {
+    console.log(this.myForm.value);
+    this.suiviSanteService.setInUserList(new User(
+      this.suiviSanteService.getUserList().length+1,
+      this.myForm.value.nom??'',      
+      this.myForm.value.prenom??'',
+      this.myForm.value.email??'',
+      this.myForm.value.password??''
+    ));  
+    
   }
 }

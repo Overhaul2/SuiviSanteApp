@@ -1,20 +1,22 @@
 <section class="inscrip" *ngIf="showRegister">
-<p>BIENVENUE INSCRIVEZ-VOUS !!!</p>
+<p>BIENVENUE INSCRIVEZ-VOUSsss !!!</p>
 <div class="inscri">
     
     <div class="formu">
-        <form class="formul" (submit)="onSubmit($event)">
-            <div class="traiter"><input type="text" [(ngModel)]="nom" placeholder="Nom  ">
-                <input type="text" [(ngModel)]="prenom" placeholder="Prenom">
+        <form class="formul" (submit)="onSubmit()" [formGroup]="myForm">
+            <div class="traiter">
+                <input type="text" formControlName="nom" placeholder="Nom">
+                <input type="text" formControlName="prenom" placeholder="Prenom">
             </div>
 
-            <div class="traiter"><input type="email" [(ngModel)]="email" placeholder="ex@gmail.com">
-                <input type="password" [(ngModel)]="password" placeholder="password">
+            <div class="traiter">
+                <input type="email" formControlName="email" placeholder="ex@gmail.com">
+                <input type="password" formControlName="password" placeholder="password">
             </div>
 
             <div class="button"> 
                 <button type="reset" style="background-color: #E71E1E;"><i class="fa-solid fa-xmark"></i></button>
-                <button type="submit" style="background-color: #008000;" ><i class="fa-solid fa-check"></i></button>
+                <button type="submit"   style="background-color: #008000;" ><i class="fa-solid fa-check"></i></button>
             </div>
            
         </form>

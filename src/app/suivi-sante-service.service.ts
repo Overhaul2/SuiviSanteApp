@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Mesure } from './mesure';
+import { User } from './user';
 
 @Injectable({
   providedIn: 'root'
@@ -9,6 +10,7 @@ export class SuiviSanteServiceService {
 
   // Tableau pour stocker les mesures
   public mesureList:Mesure[] = [];
+  public usersList:User[] = [];
   //(id:number,date:string,poids:number,taille:number,pressionArterielle:number,pouls:number)
   constructor() {
     this.mesureList.push(new Mesure(1,'2023-08-23',75, 120, 75, 70))
@@ -22,16 +24,31 @@ export class SuiviSanteServiceService {
     return this.mesureList;
 }
 
+public getUserList():User[]{
+  return this.usersList;
+}
+
 // Ajoute une mesure à la liste
 public setInMesureList(mesure:Mesure):void{
     this.mesureList.push(mesure);
 }
 
+
+public setInUserList(user:User):void{
+  this.usersList.push(user);
+  localStorage.setItem("users",JSON.stringify(this.usersList));
+}
  // Récupère les détails d'une mesure en fonction de son ID
 public getMesureById(id:number):Mesure | undefined{
 
   // Recherche dans le tableau mesureList une mesure ayant l'ID correspondant
   return this.mesureList.find(mesure => mesure.id == id);
+}
+
+public getUserById(id:number):User | undefined{
+
+  // Recherche dans le tableau mesureList une mesure ayant l'ID correspondant
+  return this.usersList.find(user => user.id == id);
 }
 // Supprime une mesure en fonction de son ID
 public deleteMesure(mesureId: number) {
@@ -44,6 +61,7 @@ public deleteMesure(mesureId: number) {
   }
 }
 updateMesure(updatedMesure: Mesure) {
+
   const index = this.mesureList.findIndex(mesure => mesure.id === updatedMesure.id);
   if (index !== -1) {
       this.mesureList[index] = updatedMesure;
