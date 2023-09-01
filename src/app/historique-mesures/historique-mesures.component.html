@@ -3,16 +3,19 @@
     <div class="modal-container">
         <div class="add-custom">
             <div class="modal-header">
-                <h3 style="padding: 10px;" *ngIf="editable">Modification</h3> 
+                <h3 style="padding: 10px;" *ngIf="editable">Modification</h3>
             </div>
+            <H3>AJOUTER MESURE</H3>
                 <div id="mesure"> <!-- Champs pour entrer les données de mesure -->
-                    <div class="input"><input value="{{mesureItem.date}}" type="date" placeholder="Date"></div>            
-                    <div class="input"><input value="{{mesureItem.poids}}" type="number" placeholder="Poids"></div>            
-                    <div class="input"><input value="{{mesureItem.taille}}" type="number" placeholder="Taille"></div>            
+                    <div class="input"><input value="{{mesureItem.date}}" type="date" placeholder="Date"></div>
+                    <div class="input"><input value="{{mesureItem.poids}}" type="number" placeholder="Poids"></div>
+                    <div class="input"><input value="{{mesureItem.taille}}" type="number" placeholder="Taille"></div>
                     <div class="input"><input value="{{mesureItem.pouls}}" type="number" placeholder="Pouls"></div>
-                    <div class="input w-100"><input type="number" value="{{mesureItem.pressionArterielle}}" placeholder="Pression artérielle"></div>
+                    <!-- <div class="input w-100"><input type="number" value="{{mesureItem.pressionArterielle}}" placeholder="Pression artérielle"></div> -->
+                    <div class="input"><input type="number" value="{{mesureItem.tensionSystolique}}" placeholder="Tension Systolique"></div>
+                    <div class="input"><input type="number" value="{{mesureItem.tensionDiastolique}}" placeholder="Tension Diastolique"></div>
                 </div>
-               
+
                 <div class="footer"> <!-- Boutons de fermeture et d'enregistrement des données -->
                     <div class="input"><a (click)="addMe = false" href="#" style="color: red;"><i class="fa-solid fa-xmark"></i></a></div>
                     <div class="input t-right">
@@ -20,7 +23,7 @@
                         <a *ngIf="editable" (click)="updateMesure($event,mesureItem.id)" href="#"><i class="fa-solid fa-floppy-disk"></i></a>
                     </div>
                 </div>
-        </div>        
+        </div>
     </div>
 </div>
 
@@ -32,11 +35,13 @@
             </div>
             <div class="md-container"> <!-- Affichage des détails de la mesure -->
             <p><b><span>Date: </span><span>{{mesureItem.date}}</span></b></p>
-            <p><b><span>Poids: </span><span>{{mesureItem.poids}} kg</span></b></p>            
+            <p><b><span>Poids: </span><span>{{mesureItem.poids}} kg</span></b></p>
             <p><b><span>Taille: </span><span>{{mesureItem.taille}} cm</span></b></p>
             <p><b><span>Pouls: </span><span>{{mesureItem.pouls}} bmp</span></b></p>
-            <p><b><span>Pression artérielle: </span><span>{{mesureItem.pressionArterielle}} mmHg</span></b></p>
+            <p><b><span>Tension Diastolique: </span><span>{{mesureItem.tensionSystolique}} mmHg</span></b></p>
+            <p><b><span>Tension Systolique: </span><span>{{mesureItem.tensionDiastolique}} mmHg</span></b></p>
             <p><b><span style="color: red;"> Indice de masse corporelle: </span><span style="color: red;">{{calculateIMC(mesureItem.poids, mesureItem.taille)}}</span></b></p>
+            <p><b><span>Pression artérielle: </span><span>{{mesureItem.tensionSystolique}}/{{mesureItem.tensionDiastolique}} mmHg</span></b></p>
 
             <div class="footer"> <!-- Boutons pour éditer, supprimer et fermer la modal -->
                 <div class="input"><a (click)="deleteMesure(mesureItem.id)" style="color: red;"><i class="fa-solid fa-trash-can"></i></a></div>
@@ -46,23 +51,23 @@
                     <i class="fa-solid fa-share"></i></a></div>
             </div>
         </div>
-        
+
             <p style="height: 20px;"></p>
         </div>
-        
+
     </div>
 </div>
 
 <div class="container">
     <div class="historique-container">
-       
+
         <div *ngFor="let mesure of mesureList" class="historique"><a (click)="openModalView($event,'myModalHistorique',mesure.id)" href="#">Historique {{mesure.id}}   IMC : {{ calculateIMC(mesure.poids, mesure.taille) }}</a></div>
-      
+
     <div class="action-container">
         <a href="#" (click)="openModal($event)">Ajouter</a>
     </div>
     </div>
-    
+
     <div class="img-container">
         <img class="floating-image" src="../../assets/fich.png" alt="logo">
       </div>

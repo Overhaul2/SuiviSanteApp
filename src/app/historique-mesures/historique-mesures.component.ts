@@ -19,7 +19,7 @@ export class HistoriqueMesuresComponent implements OnInit {
   ngOnInit(): void {
     this.mesureList = this.mesureServices.getMesureList();
     this.mesureItem = new Mesure(parseInt(""), "", parseInt(""),
-      parseFloat(""), parseInt(""), parseInt(""));
+      parseFloat(""), parseInt(""), parseInt(""), parseInt(""));
   }
   mesureServices: SuiviSanteServiceService = inject(SuiviSanteServiceService);
 
@@ -35,7 +35,8 @@ export class HistoriqueMesuresComponent implements OnInit {
       allMesureTag[1].value === "" || // Poids
       allMesureTag[2].value === "" || // Taille
       allMesureTag[3].value === "" || // Pouls
-      allMesureTag[4].value === ""    // Pression artérielle
+      allMesureTag[4].value === "" ||   // tension Systolique
+      allMesureTag[5].value === ""    // tension Diastolique
     ) {
       // const Swal = require('sweetalert2');
       // alert("Veuillez remplir tous les champs obligatoires.");
@@ -54,7 +55,9 @@ export class HistoriqueMesuresComponent implements OnInit {
     var poidsValue = parseInt(allMesureTag[1].value);
     var tailleValue = parseInt(allMesureTag[2].value);
     var poulsValue = parseInt(allMesureTag[3].value);
-    var pressionArterielleValue = parseInt(allMesureTag[4].value);
+    var tensionSystoliquevalue = parseInt(allMesureTag[4].value);
+    var tensionDiastoliqueValue = parseInt(allMesureTag[5].value);
+    var pressionArterielleValue = tensionSystoliquevalue/tensionDiastoliqueValue;
     //obtenir la date du jour
     var today = new Date();
     if (dateValue === today  //Vérifier si la date est postérieure à la date du jour
@@ -82,7 +85,7 @@ export class HistoriqueMesuresComponent implements OnInit {
     if (tailleValue < 100 || tailleValue > 300) {
       Swal.fire({
         title: 'Erreur!',
-        text: 'La taille doit être compris entre 100 et 300',
+        text: 'La taille doit être compris entre 100 Cm et 300 Cm',
         icon: 'error',
         confirmButtonText: 'OK'
       })
@@ -97,22 +100,37 @@ export class HistoriqueMesuresComponent implements OnInit {
       })
       return
     }
-    if (pressionArterielleValue < 60 || pressionArterielleValue > 200) {
+    if (tensionSystoliquevalue < 120) {
       Swal.fire({
         title: 'Erreur!',
-        text: 'La pression arteriel doit être compris entre 60 et 200',
+        text: 'La Tension Systolique ne doit pas être inferieur a 120',
         icon: 'error',
         confirmButtonText: 'OK'
+
       })
       return
     }
+
+    if (tensionDiastoliqueValue < 80) {
+      Swal.fire({
+        title: 'Erreur!',
+        text: 'La Tension Diastolique ne doit pas être inferieur a 80',
+        icon: 'error',
+        confirmButtonText: 'OK'
+
+      })
+      return
+    }
+
+
     var newMesure: Mesure = new Mesure(
       this.mesureServices.getMesureList().length + 1,
       allMesureTag[0].value,
       parseInt(allMesureTag[1].value),  //poids
       parseInt(allMesureTag[2].value),
       parseInt(allMesureTag[3].value),
-      parseInt(allMesureTag[4].value))
+      parseInt(allMesureTag[4].value),
+      parseInt(allMesureTag[5].value))
     this.mesureServices.setInMesureList(newMesure);
     this.mesureItemShow = null;
     this.addMe = false;
@@ -131,13 +149,13 @@ export class HistoriqueMesuresComponent implements OnInit {
       index,
       allMesureTag[0].value,
       parseInt(allMesureTag[1].value),  //poids
-      parseInt(allMesureTag[2].value),
-      parseInt(allMesureTag[3].value),
-      parseInt(allMesureTag[4].value));
+      parseInt(allMesureTag[2].value), //taille
+      parseInt(allMesureTag[3].value), //pouls
+      parseInt(allMesureTag[4].value), //tension systolique
+      parseInt(allMesureTag[5].value)); //tension diastolique
     this.mesureServices.getMesureList().splice(index - 1, 1, newMesure);
     //this.mesureServices.getMesureList()[index] = newMesure;
 
-    // console.log("le contenu a été modifier");
     Swal.fire('Modification', 'La mesure a été Modifier avec succèe', 'success')
 
     //setInMesureList(newMesure);
@@ -152,7 +170,7 @@ export class HistoriqueMesuresComponent implements OnInit {
     this.editable = false;
     console.log(this.addMe);
     this.mesureItem = new Mesure(parseInt(""), "", parseInt(""),
-      parseFloat(""), parseInt(""), parseInt(""));
+      parseFloat(""), parseInt(""), parseInt(""), parseInt(""));
   }
   // Ouvre une fenêtre modale pour afficher les détails d'une mesure spécifique
   public openModalView(e: Event, id: string, mesureId: number) {
