@@ -44,7 +44,7 @@ export type ChartOptions = {
   styleUrls: ['./tableau-bord.component.css']
 })
 export class TableauBordComponent implements OnInit{
- // public mesureList:Mesure[] = [];
+ public mesureList:Mesure[] = [];
   historique:Mesure[] = [];
   @ViewChild("chart") chart: ChartComponent | undefined;
   public chartOptions!: Partial<ChartOptions>;
@@ -61,7 +61,9 @@ export class TableauBordComponent implements OnInit{
     const categories: string[] = [];
 
     this.historique.forEach(mesure =>{
-      pressionArterielleData.push(mesure.pressionArterielle);
+        const presion=(mesure.tensionSystolique+2*mesure.tensionDiastolique)/3
+        const pr=Math.round(presion*100)/100
+       pressionArterielleData.push(pr);
       poidsData.push(mesure.poids);
       poulsData.push(mesure.pouls);
       categories.push(mesure.date);

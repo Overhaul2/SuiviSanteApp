@@ -14,10 +14,10 @@ export class SuiviSanteServiceService {
   public usersList:User[] = [];
   //(id:number,date:string,poids:number,taille:number,pressionArterielle:number,pouls:number)
   constructor() {
-    this.mesureList.push(new Mesure(1,'2023-08-23',75, 120, 75, 70))
-    this.mesureList.push(new Mesure(2,'2023-06-23',85, 120, 75, 70));
-    this.mesureList.push(new Mesure(3,'2023-05-23',95, 120, 75, 70));
-    this.mesureList.push(new Mesure(4,'2023-04-23',65, 120, 75, 70))
+    this.mesureList.push(new Mesure(1,'2023-08-23',75, 120, 75, 120, 80))
+    this.mesureList.push(new Mesure(2,'2023-06-23',85, 120, 75, 120, 90));
+    this.mesureList.push(new Mesure(3,'2023-05-23',95, 120, 75, 120, 80));
+    this.mesureList.push(new Mesure(4,'2023-04-23',65, 120, 75, 120, 85))
    }
 
 // Récupère la liste complète des mesures
@@ -59,7 +59,7 @@ public deleteMesure(mesureId: number) {
 
   // Si l'index est valide (différent de -1), supprimez la mesure du tableau
   if (index !== -1) {
-    const Confirmation= Swal.fire({
+  Swal.fire({
       title: 'Confirmation!',
       text: 'Voulez-vous vraiment Supprimer ?',
       icon: 'warning',
