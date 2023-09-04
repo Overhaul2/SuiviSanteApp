@@ -33,6 +33,9 @@
     border-radius: 10px;
     transition: .3s;
 }
+.add-custom{
+  margin-top: 60px;
+}
 .action-container a:hover{
   background-color: #036103;
   color: #dfe310;
@@ -48,9 +51,10 @@
 }
 .modal-container{
 
-    width: 30%;
+    width: 40%;
+  
     margin: auto;
-    margin-top: 60px;
+     margin-top: 20px; 
     background-color: #008000;
     border-radius: 10px;
 }
@@ -104,9 +108,9 @@
     cursor: pointer;
 
 }
-/* .modal-custom .view{
-    display: none;
-} */
+.modal-custom .view{
+    margin-bottom: 20px;
+}  
 
 .modal-custom .view{
     color: #000;

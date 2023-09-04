@@ -14,10 +14,10 @@ export class SuiviSanteServiceService {
   public usersList:User[] = [];
   //(id:number,date:string,poids:number,taille:number,pressionArterielle:number,pouls:number)
   constructor() {
-    this.mesureList.push(new Mesure(1,'2023-08-23',75, 120, 75, 120, 80))
-    this.mesureList.push(new Mesure(2,'2023-06-23',85, 120, 75, 120, 90));
-    this.mesureList.push(new Mesure(3,'2023-05-23',95, 120, 75, 120, 80));
-    this.mesureList.push(new Mesure(4,'2023-04-23',65, 120, 75, 120, 85))
+    this.mesureList.push(new Mesure(1,'2023-08-31',75, 172, 70, 130, 80))
+    this.mesureList.push(new Mesure(2,'2023-09-01',85, 200, 80, 120, 90));
+    this.mesureList.push(new Mesure(3,'2023-09-02',95, 201, 70, 125, 95));
+    this.mesureList.push(new Mesure(4,'2023-09-03',65, 100, 75, 122, 85))
    }
 
 // Récupère la liste complète des mesures
