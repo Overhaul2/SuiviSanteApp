@@ -52,9 +52,9 @@
 .modal-container{
 
     width: 40%;
-  
+
     margin: auto;
-     margin-top: 20px; 
+     margin-top: 20px;
     background-color: #008000;
     border-radius: 10px;
 }
@@ -75,11 +75,11 @@
     border: 1px solid #ccc;
     transition: border-color 0.3s;
   }
-  
+
   .validation-input.ng-dirty.ng-invalid {
     border-color: red;
   }
-  
+
   .message-erreur {
     color: red;
     font-size: 12px;
@@ -87,15 +87,15 @@
     opacity: 0;
     transition: opacity 2s;
   }
-  
+
   .message-erreur.ng-leave {
     opacity: 1;
   }
-  
+
   .message-erreur.ng-leave-active {
     opacity: 0;
   }
-  
+
 .modal-custom .w-100{
     width: 100%;
 }
@@ -110,7 +110,7 @@
 }
 .modal-custom .view{
     margin-bottom: 20px;
-}  
+}
 
 .modal-custom .view{
     color: #000;
@@ -138,6 +138,11 @@ input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
+}
+.input label
+{
+  font-weight: bold;
+  font-size: 1.2rem;
 }
 
 /* Firefox */

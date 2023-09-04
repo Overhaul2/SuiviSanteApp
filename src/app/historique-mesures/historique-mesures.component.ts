@@ -63,7 +63,7 @@ export class HistoriqueMesuresComponent implements OnInit {
     var tensionDiastoliqueValue = parseInt(allMesureTag[5].value);
     //obtenir la date du jour
     var today = new Date();
-    if (dateValue === today  //Vérifier si la date est postérieure à la date du jour
+    if (dateValue > today  //Vérifier si la date est postérieure à la date du jour
     ) {
       Swal.fire({
         title: 'Erreur!',
@@ -138,7 +138,7 @@ export class HistoriqueMesuresComponent implements OnInit {
     this.mesureItemShow = null;
     this.addMe = false;
   }
- 
+
   public updateMesure(e: Event, index: number) {
     e.preventDefault();
     var mesureTag = <HTMLElement>document.getElementById("mesure");
@@ -152,6 +152,102 @@ export class HistoriqueMesuresComponent implements OnInit {
       parseInt(allMesureTag[3].value), //pouls
       parseInt(allMesureTag[4].value), //tension systolique
       parseInt(allMesureTag[5].value)); //tension diastolique
+
+      // Verification des données saisis l'ors de ka modification
+
+          // Vérification de chaque champ obligatoire
+    if (
+      allMesureTag[0].value === "" || // Date
+      allMesureTag[1].value === "" || // Poids
+      allMesureTag[2].value === "" || // Taille
+      allMesureTag[3].value === "" || // Pouls
+      allMesureTag[4].value === "" ||   // tension Systolique
+      allMesureTag[5].value === ""    // tension Diastolique
+    ) {
+      // const Swal = require('sweetalert2');
+      // alert("Veuillez remplir tous les champs obligatoires.");
+      Swal.fire({
+        title: 'Erreur!',
+        text: 'Veuillez remplire touts les champs',
+        icon: 'error',
+        confirmButtonText: 'Ok',
+        padding: '2px',
+      })
+      return;
+    }
+
+    //recuperation des donné saisis par user
+    var dateValue = new Date(allMesureTag[0].value);
+    var poidsValue = parseInt(allMesureTag[1].value);
+    var tailleValue = parseInt(allMesureTag[2].value);
+    var poulsValue = parseInt(allMesureTag[3].value);
+    var tensionSystoliquevalue = parseInt(allMesureTag[4].value);
+    var tensionDiastoliqueValue = parseInt(allMesureTag[5].value);
+    //obtenir la date du jour
+    var today = new Date();
+    if (dateValue > today  //Vérifier si la date est postérieure à la date du jour
+    ) {
+      Swal.fire({
+        title: 'Erreur!',
+        text: 'Veillez saisir une date valide',
+        icon: 'error',
+        confirmButtonText: 'OK'
+      })
+      return
+    }
+    if (poidsValue < 20 || poidsValue > 200 //verifie si le poids est compris entre 20 ET 200Kg
+    ) {
+      Swal.fire({
+        title: 'Erreur!',
+        text: 'Le poids doit être compris entre 20 et 200',
+        icon: 'error',
+        confirmButtonText: 'OK'
+      })
+      return
+
+    }
+
+    if (tailleValue < 100 || tailleValue > 300) {
+      Swal.fire({
+        title: 'Erreur!',
+        text: 'La taille doit être compris entre 100 Cm et 300 Cm',
+        icon: 'error',
+        confirmButtonText: 'OK'
+      })
+      return
+    }
+    if (poulsValue < 60 || poulsValue > 80) {
+      Swal.fire({
+        title: 'Erreur!',
+        text: 'Le pouls doit être compris entre 60 et 80',
+        icon: 'error',
+        confirmButtonText: 'OK'
+      })
+      return
+    }
+    if (tensionSystoliquevalue < 120) {
+      Swal.fire({
+        title: 'Erreur!',
+        text: 'La Tension Systolique ne doit pas être inferieur a 120',
+        icon: 'error',
+        confirmButtonText: 'OK'
+
+      })
+      return
+    }
+
+    if (tensionDiastoliqueValue < 80) {
+      Swal.fire({
+        title: 'Erreur!',
+        text: 'La Tension Diastolique ne doit pas être inferieur a 80',
+        icon: 'error',
+        confirmButtonText: 'OK'
+
+      })
+      return
+    }
+
+      //fin Verification des données saisis l'ors de ka modification
 
     this.mesureServices.getMesureList().splice(index - 1, 1, newMesure);
     //this.mesureServices.getMesureList()[index] = newMesure;
@@ -199,17 +295,17 @@ export class HistoriqueMesuresComponent implements OnInit {
   public sortOption: string = 'date';
 
 
-  // CALCULE DE L'IMC AVC LES CATEGORIE INFO 
+  // CALCULE DE L'IMC AVEC LES CATEGORIE INFO
   calculateIMC(poids: number, taille: number): { imc: number, Categorie: string, Info: string } {
     // console.log(taille,poids);
     if (taille <= 0) {
      return { imc: 0, Categorie: 'interval', Info: 'solution' };
    }
-     const tailleMetres = taille/100; 
+     const tailleMetres = taille/100;
      const imc = poids / (tailleMetres * tailleMetres);
      console.log(imc)
-     const imcArrondi= Math.round(imc * 10) / 10; 
-   
+     const imcArrondi= Math.round(imc * 10) / 10;
+
      let Categorie = '';
      let Info = '';
 
@@ -229,8 +325,8 @@ export class HistoriqueMesuresComponent implements OnInit {
       Categorie = 'Obésité'
       Info = 'Ici, le poids est déjà trop élevé par rapport à la taille. Les risques de maladies métaboliques sont encore plus élevés. Diabète, maladies cardiaques... Veillez consulter votre medecin '
      }
-    
+
     return {imc : imcArrondi, Categorie, Info}
-    
+
   }
 }

@@ -5,14 +5,32 @@
             <div class="modal-header">
                 <h3 style="align-items: center;" *ngIf="editable"  style="margin-left: 70px; color: white;">Modification</h3>
             </div>
-            <H3 *ngIf="!editable" style="margin-left: 70px; color: white;">AJOUTER MESURE</H3>
+            <H3 *ngIf="!editable" style="margin-left: 150px; color: rgb(255, 201, 7);">AJOUTER MESURE</H3>
                 <div id="mesure"> <!-- Champs pour entrer les données de mesure -->
-                    <div class="input"><input value="{{mesureItem.date}}" type="date" placeholder="Date"></div>
-                    <div class="input"><input value="{{mesureItem.poids}}" type="number" placeholder="Poids"></div>
-                    <div class="input"><input value="{{mesureItem.taille}}" type="number" placeholder="Taille"></div>
-                    <div class="input"><input value="{{mesureItem.pouls}}" type="number" placeholder="Pouls"></div>
-                    <div class="input"><input type="number" value="{{mesureItem.tensionSystolique}}" placeholder="Tension Systolique"></div>
-                    <div class="input"><input type="number" value="{{mesureItem.tensionDiastolique}}" placeholder="Tension Diastolique"></div>
+                    <div class="input">
+                      <label for="date">Date</label>
+                      <input value="{{mesureItem.date}}" type="date" placeholder="Ex:2023/08/04">
+                    </div>
+                    <div class="input">
+                      <label for="poids">Poids</label>
+                      <input value="{{mesureItem.poids}}" type="number" placeholder="Ex:75">
+                    </div>
+                    <div class="input">
+                      <label for="taille">Taille/cm</label>
+                      <input value="{{mesureItem.taille}}" type="number" placeholder="Ex:175">
+                    </div>
+                    <div class="input">
+                      <label for="pouls">Pouls</label>
+                      <input value="{{mesureItem.pouls}}" type="number" placeholder="Ex:70">
+                    </div>
+                    <div class="input">
+                      <label for="tensionSystolique">Tension Systolique</label>
+                      <input type="number" value="{{mesureItem.tensionSystolique}}" placeholder="Ex:120">
+                    </div>
+                    <div class="input">
+                      <label for="tensionDiastolique">Tension Diastolique</label>
+                      <input type="number" value="{{mesureItem.tensionDiastolique}}" placeholder="Ex:80">
+                    </div>
                 </div>
 
                 <div class="footer"> <!-- Boutons de fermeture et d'enregistrement des données -->
@@ -52,17 +70,15 @@
                     <i class="fa-solid fa-share"></i></a></div>
             </div>
         </div>
-
             <p style="height: 20px;"></p>
         </div>
-
     </div>
 </div>
 
 <div class="container">
     <div class="historique-container">
 
-        <div *ngFor="let mesure of mesureList" class="historique"><a (click)="openModalView($event,'myModalHistorique',mesure.id)" href="#">Historique {{mesure.id}}   <span style="color: #dfe310;">  IMC[]</span></a></div>
+        <div *ngFor="let mesure of mesureList" class="historique"><a (click)="openModalView($event,'myModalHistorique',mesure.id)" href="#">Historique {{mesure.id}}   <span style="color: #dfe310;">  IMC[{{}}]</span></a></div>
 
     <div class="action-container">
         <a href="#" (click)="openModal($event)">Ajouter</a>
