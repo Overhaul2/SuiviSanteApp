@@ -61,7 +61,6 @@ export class HistoriqueMesuresComponent implements OnInit {
     var poulsValue = parseInt(allMesureTag[3].value);
     var tensionSystoliquevalue = parseInt(allMesureTag[4].value);
     var tensionDiastoliqueValue = parseInt(allMesureTag[5].value);
-    var pressionArterielleValue = tensionSystoliquevalue/tensionDiastoliqueValue;
     //obtenir la date du jour
     var today = new Date();
     if (dateValue === today  //Vérifier si la date est postérieure à la date du jour
